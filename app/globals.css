@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+@theme {
+  --color-okra-bright: #00ff00;
+  --color-okra-deep: #003c00;
+  --color-okra-black: #000000;
+  --color-okra-paper: #FBF6F6;
+  --color-okra-fire: #dd3e00;
+
+  --font-oo-neureal: var(--font-oo-neureal);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #FBF6F6;
+  --spacing: 0.25rem;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-oo-neureal), system-ui, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* Custom Container System */
+.container-custom {
+  @apply w-full max-w-[1600px] mx-auto px-6 md:px-[6%] lg:px-[8%];
+}
+
+/* Section gap utility for generous negative space */
+.section-gap {
+  @apply py-64; /* 16rem vertical spacing */
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-oo-neureal), sans-serif;
+  text-transform: uppercase;
+}
+
+/* ANTIGRAVITY_MEDIA_INJECTION: Global Styles - Append here */
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Okra Green Gradients */
+.gradient-okra-glow {
+  background: radial-gradient(ellipse at center, rgba(0, 255, 0, 0.15), transparent 70%);
+}
+
+.gradient-okra-deep-to-bright {
+  background: linear-gradient(135deg, #003c00, #00ff00);
+}
+
+.gradient-okra-upward {
+  background: linear-gradient(to top, rgba(0, 60, 0, 0.3), transparent);
+}
+
+/* Bioluminescent text glow */
+.text-glow-bright {
+  text-shadow: 0 0 40px rgba(0, 255, 0, 0.4), 0 0 80px rgba(0, 255, 0, 0.15);
+}
+
+/* Reset text glow — inheritable text-shadow off */
+.text-glow-none {
+  text-shadow: none;
+}
+
+/* Breathing text glow — guides the eye at a natural reading pace */
+@keyframes text-glow-breathe {
+  0%, 100% { text-shadow: 0 0 26px rgba(0, 255, 0, 0.33), 0 0 52px rgba(0, 255, 0, 0.1); }
+  50% { text-shadow: 0 0 43px rgba(0, 255, 0, 0.65), 0 0 85px rgba(0, 255, 0, 0.2); }
+}
+.text-glow-breathe {
+  animation: text-glow-breathe 4s ease-in-out infinite;
+}
+
+/* Breathing border glow — okra-bright for inputs */
+@keyframes border-glow-breathe {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 255, 0, 0.15), 0 0 24px rgba(0, 255, 0, 0.05); }
+  50% { box-shadow: 0 0 24px rgba(0, 255, 0, 0.35), 0 0 48px rgba(0, 255, 0, 0.12); }
+}
+.border-glow-breathe {
+  animation: border-glow-breathe 4s ease-in-out infinite;
+}
+
+/* Breathing border glow — okra-fire for buttons */
+@keyframes border-glow-breathe-fire {
+  0%, 100% { box-shadow: 0 0 12px rgba(221, 62, 0, 0.2), 0 0 24px rgba(221, 62, 0, 0.08); }
+  50% { box-shadow: 0 0 24px rgba(221, 62, 0, 0.4), 0 0 48px rgba(221, 62, 0, 0.15); }
+}
+.border-glow-breathe-fire {
+  animation: border-glow-breathe-fire 4s ease-in-out infinite;
+}
+
+/* Intense fire pulse for close buttons */
+@keyframes fire-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(221, 62, 0, 0.4), 0 0 20px rgba(221, 62, 0, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 25px rgba(221, 62, 0, 0.8), 0 0 50px rgba(221, 62, 0, 0.4); transform: scale(1.08); }
+}
+.fire-pulse {
+  animation: fire-pulse 1.2s ease-in-out infinite;
+}
+
+/* Intense bright pulse for hamburger morph button */
+@keyframes bright-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.4), 0 0 20px rgba(0, 255, 0, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.8), 0 0 50px rgba(0, 255, 0, 0.4); transform: scale(1.08); }
+}
+.bright-pulse {
+  animation: bright-pulse 1.2s ease-in-out infinite;
+}
+
+/* Subtle scan line texture (premium feel) */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+}
+
+/* Film-grain animation — steps() gives the discrete "film projector"
+   jumps instead of a smooth drift. Low opacity keeps it subtle. */
+@keyframes grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-5%, -10%); }
+  20%  { transform: translate(-15%, 5%); }
+  30%  { transform: translate(7%, -25%); }
+  40%  { transform: translate(25%, 25%); }
+  50%  { transform: translate(-25%, 7%); }
+  60%  { transform: translate(15%, -15%); }
+  70%  { transform: translate(25%, 35%); }
+  80%  { transform: translate(-35%, -15%); }
+  90%  { transform: translate(15%, 25%); }
+  100% { transform: translate(0, 0); }
+}
+.grain-shift {
+  animation: grain-shift 0.8s steps(10) infinite;
+}
+
+/* Cinematic vignette — darker corners for the frame-film heroes. */
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Body-copy link — used inside paragraphs of body text (not navigation).
+   Subtle by default (matches surrounding copy at ~80% opacity), brightens
+   to okra-bright with a soft glow on hover. Underline on focus for
+   keyboard a11y. */
+.body-link {
+  color: rgba(0, 255, 0, 0.8);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.25);
+  transition: color 300ms ease, border-color 300ms ease,
+    text-shadow 300ms ease, background-color 300ms ease;
+}
+.body-link:hover {
+  color: #00ff00;
+  border-bottom-color: rgba(0, 255, 0, 0.7);
+  text-shadow: 0 0 18px rgba(0, 255, 0, 0.45);
+}
+.body-link:focus-visible {
+  outline: 2px solid rgba(0, 255, 0, 0.6);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Premium Button Standard */
+.btn-premium {
+  @apply relative inline-flex items-center justify-center px-6 py-3 bg-transparent text-okra-fire font-oo-neureal text-lg md:text-xl uppercase tracking-widest transition-all duration-700 ease-in-out hover:scale-[1.02] active:scale-[0.98] overflow-hidden border-2 border-okra-fire/50;
+  box-shadow: 0 0 15px rgba(221, 62, 0, 0.3);
+}
+
+.btn-premium:hover,
+.btn-premium.is-scrolled-active {
+  @apply text-okra-bright border-okra-bright scale-[1.02];
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);
+}
+
+.btn-premium::after {
+  content: '';
+  @apply absolute inset-0 bg-okra-bright/20 blur-2xl opacity-0 transition-opacity duration-700;
+}
+
+.btn-premium:hover::after,
+.btn-premium.is-scrolled-active::after {
+  @apply opacity-100;
+}
+
+/* Support for scroll-triggered hover on standard groups */
+.group.is-scrolled-active .group-hover\:w-full {
+  @apply w-full;
+}
+.group.is-scrolled-active .group-hover\:grayscale-0 {
+  @apply grayscale-0;
+}
+.group.is-scrolled-active .group-hover\:scale-105 {
+  @apply scale-105;
+}
+.group.is-scrolled-active .group-hover\:opacity-100 {
+  @apply opacity-100;
+}
+.group.is-scrolled-active .group-hover\:bg-okra-bright\/5 {
+  background-color: rgba(0, 255, 0, 0.05);
+}
+.group.is-scrolled-active .group-hover\:text-white {
+  @apply text-white;
+}
+
+/* ==============================
+   Global badge / pill system
+   All badges share the base .badge style.
+   Append variant class for colour + glow.
+   ============================== */
+
+.badge {
+  font-family: var(--font-oo-neureal), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  border-radius: 9999px;
+  text-align: center;
+  padding: 1px 4px;
+  transition: all 300ms ease;
+}
+
+/* Bright (green glow) variant — labels, active filters */
+.badge-bright {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  text-shadow: 0 0 40px rgba(0, 255, 0, 0.4), 0 0 80px rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.25);
+}
+
+/* Fire variant — interactive CTAs, social pills */
+.badge-fire {
+  border: 1px solid rgba(221, 62, 0, 0.4);
+  color: #dd3e00;
+  box-shadow: 0 0 8px rgba(221, 62, 0, 0.3);
+  background: transparent;
+}
+.badge-fire:hover,
+.badge-fire:active {
+  color: #00ff00;
+  border-color: rgba(0, 255, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+/* Fire ghost variant — non-interactive genre tags, subdued */
+.badge-fire-ghost {
+  border: 1px solid rgba(221, 62, 0, 0.2);
+  color: rgba(221, 62, 0, 0.7);
+  background: transparent;
+}
+
+/* Large CTA variant — Book CTA on profile pages */
+.badge-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(221, 62, 0, 0.4);
+  color: #dd3e00;
+  font-family: var(--font-oo-neureal), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(221, 62, 0, 0.3);
+  transition: all 300ms ease;
+}
+.badge-cta:hover,
+.badge-cta:active {
+  color: #00ff00;
+  border-color: rgba(0, 255, 0, 0.5);
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) !important;
+}
+
+/* Filter toggle badge */
+.badge-filter {
+  font-family: var(--font-oo-neureal), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  border-radius: 9999px;
+  transition: all 300ms ease;
+  border: 1px solid rgba(221, 62, 0, 0.2);
+  color: rgba(221, 62, 0, 0.6);
+  background: transparent;
+}
+.badge-filter:hover {
+  color: #00ff00;
+  border-color: rgba(0, 255, 0, 0.3);
+}
+
+/* Active state for filter toggles */
+.badge-filter-active {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
